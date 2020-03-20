@@ -51,7 +51,7 @@ class PiClock(AppBase):
     self.forecast = self.caller.forecast 
     
     # Update 24 hour temp history
-    self.tempHistory.append( int(self.weather[0]['Temperature']['Imperial']['Value']) )
+    self.tempHistory.append( int(self.weather[0]['Temperature']['Metric']['Value']) )
     print(self.tempHistory)
     
     if len( self.tempHistory ) > 24:
@@ -89,7 +89,7 @@ class PiClock(AppBase):
   def defineClockVars(self):
   
     # Set current temp & weather data from API call
-    currentTemp = str( int(self.weather[0]['Temperature']['Imperial']['Value']) )
+    currentTemp = str( int(self.weather[0]['Temperature']['Metric']['Value']) )
     currentWeather = self.weather[0]['WeatherText'].split(' ')
     
     isDayTime = self.weather[0]['IsDayTime']
